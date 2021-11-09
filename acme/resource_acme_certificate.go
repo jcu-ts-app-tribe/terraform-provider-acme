@@ -417,23 +417,24 @@ func resourceACMECertificateUpdate(d *schema.ResourceData, meta interface{}) err
 
 // resourceACMECertificateDelete "deletes" the certificate by revoking it.
 func resourceACMECertificateDelete(d *schema.ResourceData, meta interface{}) error {
-	client, _, err := expandACMEClient(d, meta, true)
-	if err != nil {
-		return err
-	}
+	//client, _, err := expandACMEClient(d, meta, true)
+	//if err != nil {
+	//	return err
+	//}
+	//
+	//cert := expandCertificateResource(d)
+	//remaining, err := certSecondsRemaining(cert)
+	//if err != nil {
+	//	return err
+	//}
+	//
+	//if remaining >= 0 {
+	//	if err := client.Certificate.Revoke(cert.Certificate); err != nil {
+	//		return err
+	//	}
+	//}
 
-	cert := expandCertificateResource(d)
-	remaining, err := certSecondsRemaining(cert)
-	if err != nil {
-		return err
-	}
-
-	if remaining >= 0 {
-		if err := client.Certificate.Revoke(cert.Certificate); err != nil {
-			return err
-		}
-	}
-
+	log.Printf("[WARN] skipping certificate revocation")
 	return nil
 }
 
